@@ -143,9 +143,12 @@ export type GetDependencyReleaseLine = (
   changelogOpts: any
 ) => Promise<string>;
 
+export type GetsummaryLine = () => Promise<string>;
+
 export type ChangelogFunctions = {
   getReleaseLine: GetReleaseLine;
   getDependencyReleaseLine: GetDependencyReleaseLine;
+  getSummaryLine?: GetsummaryLine;
 };
 
 export type GetAddMessage = (

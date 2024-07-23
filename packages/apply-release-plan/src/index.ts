@@ -222,6 +222,10 @@ async function getNewChangelogEntry(
     throw new Error("Could not resolve changelog generation functions");
   }
 
+  if (typeof possibleChangelogFunc.getSummaryLine === "function") {
+    getChangelogFuncs.getSummaryLine = possibleChangelogFunc.getSummaryLine;
+  }
+
   let commits = await getCommitsThatAddChangesets(
     changesets.map((cs) => cs.id),
     cwd
